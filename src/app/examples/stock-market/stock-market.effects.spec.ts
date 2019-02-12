@@ -53,8 +53,7 @@ describe('StockMarketEffects', () => {
         s: successAction
       };
       const source = cold('a--b--c', values);
-      /* a is mapped into s and debounced by 20ms, b and c get discarded by distinct until changed */
-      const expected = cold('--s', values);
+      const expected = cold('--s--s--s', values);
       const actions = new Actions(source);
 
       stockMarket.retrieveStock.and.returnValue(of(stock));
